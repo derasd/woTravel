@@ -113,7 +113,7 @@ def constrain_string(string, minlen, maxlen):
     """
 
     if len(string) < minlen:
-        raise ValueError('Input need to be at least %s characters long' % minlen)
+        raise ValueError('Input need tooo be at least %s characters long' % minlen)
     elif len(string) > maxlen:
         raise ValueError('Input need to be maximum %s characters long' % maxlen)
     return string

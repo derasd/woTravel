@@ -21,12 +21,12 @@
            layerOptions: { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }}];
         this.defaultLayer = this.baseLayers[0];
-        Restangular.all('tiles').getList({size:100,active:true,orderBy:"-modified"}).then(function(layers) {
+    /**     Restangular.all('tiles').getList({size:100,active:true,orderBy:"-modified"}).then(function(layers) {
             $log.debug("[mapTiles:getList] results:");
             _.assignDelete(self.baseLayers, _.cloneDeep(layers));
-            //self.defaultLayer = self.baseLayers[0];
+            self.defaultLayer = self.baseLayers[0];
         });
-
+    */
 
         this.settings = {
                 center: {

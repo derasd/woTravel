@@ -387,7 +387,6 @@
                     }
                 });
 
-                // TODO
                 var trans_start = _.pick(_.get(loc,['trans_start']),['type', 'name','note']);
                 var trans_start_waypoints = [];
                 _.forEach(_.get(loc,['trans_start','waypoints'],[]),
@@ -443,6 +442,29 @@
                     });
                 });
         }
+
+	$scope.showDeleteTripDialog = function(trip, ev) {
+            var confirm = $mdDialog.confirm()
+                .title('Do you really want to delete the trip ' + trip.name)
+                .content('These deletion is irreversible')
+                .ariaLabel('Delete Trip')
+                .ok('Delete')
+                .cancel('Cancel')
+                .targetEvent(ev);
+            $mdDialog.show(confirm).then(function() {          
+                $log.debug("Scope: "+trip)		
+		if (_.get(trip,"name","") === ""){
+                    $scope.cancelTrip();
+                } else {
+                    trip.remove().then(function() {
+                        gaToast.show('Trip ' + trip.name + ' was deleted');      
+                   //TODO reload sidenav with updated trips
+                    });
+                }
+                
+            });
+        };
+
 
 
         $scope.cancelTrip = function(){
